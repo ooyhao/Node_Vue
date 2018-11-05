@@ -15,6 +15,6 @@ server.on('request',function (req,res) {
     console.log(url);
     // res.write(url);
     // res.end();
-
+    
     res.end(url);
 });
