@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>05-在浏览器中使用art-template</title>
+</head>
+<body>	
+	<!-- 注意：在浏览器中需要引入lib/template-web.js文件
+		循环写法：{{each hobbies}}{{$value}} {{/each}}
+
+		强调：模板引擎不关心你的字符串内容，只关系自己能认识的模板标记语法；例如：{{}}
+			语法被称之为mustache语法，八字胡语法
+	 -->
+	<script type="text/javascript" src="code/node_modules/art-template/lib/template-web.js">
+	</script>
+	<script type="text/template" id="tpl">
+		<!DOCTYPE html>
+		<html>
+		<head>
+			<meta charset="UTF-8">
+			<title></title>
+		</head>
+		<body>
+			<p>姓名：{{ name }}</p>
+			<p>年龄：{{ age }}</p>
+			<p>籍贯：{{ province }}</p>
+			<p>我的爱好：{{each hobbies}}{{ $value }} {{/each}}</p>
+		</body>
+		</html>
+	</script>
+	<script>
+		var ret = template('tpl',{
+			name : 'ouYang',
+			age : 22,
+			province:'江西省',
+			hobbies:['写代码','打游戏','听音乐']
+
+		});
+		console.log(ret)
+	</script>
+
+</body>
+</html>
