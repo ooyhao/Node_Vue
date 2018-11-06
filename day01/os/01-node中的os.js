@@ -16,8 +16,6 @@ console.log("获得网卡信息：");
 console.log(os.networkInterfaces());
 
 
-
-
 //获得当前
 console.log(path.extname("c:/q/f/e/w/q/hello.txt"));
 

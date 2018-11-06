@@ -19,5 +19,4 @@ server.on("request",function (req,res) {
 		res.end('<h1>Hello Node js 中国</h1>');
 	}
 
-
 });
