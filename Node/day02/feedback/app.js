@@ -84,9 +84,9 @@ http.createServer(function(req,res){
 			// 		所以用户看到的页面的数据也就发生了变化
 		var comment = parseObj.query;
 		comment.dateTime = '2018-09-06 09:09:30';
-		// comments.push(comment);
-		comments.unshift(comment);
-		//服务端数据已经存储好了，
+		// comments.push(comment);//从后面添加
+		comments.unshift(comment);//从前面添加
+		//服务端数据已经存储好了，（301永久重定向（浏览器会记忆），302临时重定向）
 		//1.状态码设置为302，临时重定向、
 		//2.在响应头中通过Location、告诉客户端重定向到哪里。
 // 如果客户端发现响应状态码是302，就会自动到响应头中去找Location，所以就会看到客户端自动跳转。
