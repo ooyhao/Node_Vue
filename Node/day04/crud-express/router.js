@@ -11,7 +11,10 @@ router.get('/students',function(req,res){
 	student.find(function(error,data){
 		if(error){
 			console.log(error);
+<<<<<<< HEAD
 			res.status(500).send('server error');
+=======
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 		}else{
 			res.render('index.html',{
 				person:person,
@@ -46,7 +49,10 @@ router.get('/student',function(req,res){
 		student.find(function(error,data){
 			if(error){
 				console.log(error);
+<<<<<<< HEAD
 				res.status(500).send('server error');
+=======
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 			}else{
 				res.render('index.html',{
 					person:person,
@@ -58,7 +64,10 @@ router.get('/student',function(req,res){
 		student.findById(parseInt(id),function(error,data){
 		if(error){
 			console.log(error);
+<<<<<<< HEAD
 			res.status(500).send('server error');
+=======
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 		}else{
 			res.render('index.html',{
 				person:person,
@@ -82,7 +91,10 @@ router.post('/student/add',function(req,res){
 	student.save(stu,function(error){
 		if(error){
 			console.log(error);
+<<<<<<< HEAD
 			res.status(500).send('server error');
+=======
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 		}else{
 			res.redirect('/students');
 		}
@@ -122,8 +134,11 @@ router.get('/student/del/:id',function(req,res){
 	student.deleteById(id,function(error){
 		if(error){
 			console.log(error);
+<<<<<<< HEAD
 			res.status(500).send('server error');
 			return;
+=======
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 		}
 		res.redirect('/students');
 	});
@@ -168,7 +183,10 @@ router.get('/student/edit',function(req,res){
 	student.findById(id,function(error,data){
 		if(error){
 			console.log(error);
+<<<<<<< HEAD
 			res.status(500).send('server error');
+=======
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 		}else{
 			res.render('edit.html',{
 				student:data
@@ -180,13 +198,20 @@ router.get('/student/edit',function(req,res){
 
 
 router.post('/student/edit',function(req,res){
+<<<<<<< HEAD
 	// console.log(req.body);
+=======
+	console.log(req.body);
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 
 	var stu = req.body;
 	student.update(stu,function(error){
 		if(error){
 			console.log(error);
+<<<<<<< HEAD
 			res.status(500).send('server error');
+=======
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 		}else{
 			res.redirect('/students');
 		}

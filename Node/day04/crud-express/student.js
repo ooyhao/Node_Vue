@@ -41,7 +41,11 @@ exports.findById = function(id,callback){
 			return callback(error);
 		}
 		data.forEach(function(ele,index,arr){
+<<<<<<< HEAD
 			if(parseInt(ele.id) === parseInt(id)){
+=======
+			if(parseInt(ele.id) == id){
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 				student = ele;
 			}
 		});
@@ -84,6 +88,7 @@ exports.update = function(student,callback){
 		if(error){
 			return callback(error);
 		}
+<<<<<<< HEAD
 
 		student.id = parseInt(student.id);
 
@@ -103,6 +108,24 @@ exports.update = function(student,callback){
 		});
 		data[index] = student;*/
 		// console.log(index);
+=======
+		//通过es6中的find函数查找
+		// https://www.cnblogs.com/kongxianghai/p/7527526.html
+		/*var res = data.find(function(item){
+			return item.id == student.id;
+		});
+		//遍历传递进来的对象，更新属性
+		student.id = parseInt(student.id);
+		for(var key in student){
+			res[key] = student[key];
+		}
+*/
+		var index = data.findIndex(function(item){
+			return item.id == student.id;
+		});
+		data[index] = student;
+		console.log(index);
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 		var stu = {};
 		stu.students = data;
 		fs.writeFile(dbPath,JSON.stringify(stu),'utf8',function(error){
@@ -126,6 +149,7 @@ exports.deleteById = function(id,callback){
 		if(error){
 			return callback(error);
 		}
+<<<<<<< HEAD
 
 		//方法一
 		/*var studentsDB = [];
@@ -146,6 +170,17 @@ exports.deleteById = function(id,callback){
 			students:data
 		});
 		fs.writeFile(dbPath,fileData,'utf8', function(error){
+=======
+		var studentsDB = [];
+		var stu = {};
+		data.forEach(function(ele,index,arr){
+			if(parseInt(ele.id) != id){
+				studentsDB.push(ele);
+			}
+		});
+		stu.students = studentsDB;
+		fs.writeFile(dbPath,JSON.stringify(stu),'utf8', function(error){
+>>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 			if(error){
 				return callback(error);
 			}
