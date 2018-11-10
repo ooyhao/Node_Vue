@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var oReq = new XMLHttpRequest();
+		oReq.open('get','./data.json');
+		//当请求加载成功之后调用指定的回调函数。
+		oReq.onload = function(){
+			console.log(oReq.responseText);
+		};
+		oReq.send();
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+	"students": [{
+			"name": "香菱",
+			"age": "18",
+			"gender": "1",
+			"hobbies": "吟诗赏月",
+			"id": 12
+		},
+		{
+			"name": "贾迎春",
+			"age": "20",
+			"gender": "1",
+			"hobbies": "吟诗作画",
+			"id": 11
+		},
+		{
+			"name": "王熙凤",
+			"age": "30",
+			"gender": "1",
+			"hobbies": "听戏",
+			"id": 10
+		},
+		{
+			"id": 1,
+			"name": "贾宝玉",
+			"gender": 0,
+			"age": 18,
+			"hobbies": "写诗"
+		},
+		{
+			"id": 2,
+			"name": "林黛玉",
+			"gender": 1,
+			"age": 18,
+			"hobbies": "写诗"
+		},
+		{
+			"id": 3,
+			"name": "薛宝钗",
+			"gender": 1,
+			"age": 19,
+			"hobbies": "写诗"
+		},
+		{
+			"id": 4,
+			"name": "袭人",
+			"gender": 1,
+			"age": 17,
+			"hobbies": "写诗"
+		},
+		{
+			"id": 5,
+			"name": "晴雯",
+			"gender": 1,
+			"age": 17,
+			"hobbies": "写诗"
+		}
+	]
+}
