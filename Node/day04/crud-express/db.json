@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
 	"students": [{
 			"name": "香菱",
@@ -58,6 +57,3 @@
 		}
 	]
 }
-=======
-{"students":[{"name":"贾迎春","age":"20","gender":"1","hobbies":"吟诗作画","id":11},{"name":"王熙凤","age":"30","gender":"1","hobbies":"听戏","id":"10"},{"name":"张三","age":"12","gender":"1","hobbies":"听音乐","id":8},{"name":"ooyhao","age":"18","gender":"1","hobbies":"写代码","id":7},{"id":"6","name":"欧阳浩","age":"22","gender":"0","hobbies":"听音乐"},{"id":1,"name":"贾宝玉","gender":0,"age":18,"hobbies":"写诗"},{"id":2,"name":"林黛玉","gender":1,"age":18,"hobbies":"写诗"},{"id":3,"name":"薛宝钗","gender":1,"age":19,"hobbies":"写诗"},{"id":4,"name":"袭人","gender":1,"age":17,"hobbies":"写诗"},{"id":5,"name":"晴雯","gender":1,"age":17,"hobbies":"写诗"}]}
->>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
