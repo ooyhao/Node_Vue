@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        <h2>name:{{name}}</h2>
+        <h2>age:{{age}}</h2>
+        <h2>{{details()}}</h2>
+    </div>
+</body>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                name:'ouYangHao',
+                age:22
+            },
+            methods:{
+                details:function(){
+                    return '好好学习，天天向上';
+                }
+            }
+        });
+
+    </script>
+</html>

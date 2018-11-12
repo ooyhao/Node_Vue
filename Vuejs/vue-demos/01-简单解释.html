@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <!--
+        0.npm install vue
+        1.引包
+        2.new Vue 得到 Vue实例
+            Vue 暂时可以理解成一个模板引擎
+    -->
+    <div id="app">
+        <h1>{{ 1 + 1 }}</h1>
+        <h1>{{ 'hello' + 'world'}}</h1>
+        <h1>{{message}}</h1>
+        <h1>details:{{details()}}</h1>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        const app = new Vue({
+            //el 选项的作用就是告诉vue管理模板的入口节点。也就是现在的div#app的节点（包括所有孩子）都被vue给
+            //统治起来了，这样的话我就可以在被vue管理的模板中使用vue提供的特殊的模板引擎语法。
+            el:'#app',
+            data:{
+                message:'Hello Vue'
+            },
+            methods:{
+                details:function(){
+                    return '一个非常神奇的框架';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
