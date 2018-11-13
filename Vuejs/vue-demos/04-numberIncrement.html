@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="number"/>
+        <button v-on:click="number++">+1按</button>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                number:0
+            },
+            methods:{
+            }
+        });
+    </script>
+</body>
+</html>

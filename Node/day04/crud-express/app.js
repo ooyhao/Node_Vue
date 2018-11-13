@@ -24,12 +24,7 @@ app.listen(3333,function(){
 });
 
 
-<<<<<<< HEAD
-app.use(router);
-=======
 
 app.use(router);
-
->>>>>>> a7b5248f395a9ff00d82aea0baad2e3968d7533f
 
 

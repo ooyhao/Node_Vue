@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" id="firstname"/><br/>
+        <input type="text" id="lastname" />
+        <p id="fullname"></p>
+    </div>
+
+    <script>
+
+        var firstname = document.getElementById('firstname');
+        var lastname = document.getElementById('lastname');
+        var fullname = document.getElementById('fullname');
+
+        lastname.addEventListener('input',handleTextInput);
+        firstname.addEventListener('input',handleTextInput);
+
+        function handleTextInput(){
+            fullname.innerHTML = firstname.value + lastname.value;
+        }
+
+    </script>
+
+</body>
+</html>
