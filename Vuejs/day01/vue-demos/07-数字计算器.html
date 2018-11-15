@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input type="number" v-model="firstNumber"  />
+        <select v-model="selected">
+            <option value="0">+</option>
+            <option value="1">-</option>
+            <option value="2">*</option>
+            <option value="3">/</option>
+        </select>
+        <input type="number" v-model="secondNumber" />
+        <button v-on:click="handleAddOperation">=</button>
+        <input type="text" readonly="readonly" v-model="result"/>
+    </div>
+
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                firstNumber:0,
+                secondNumber:0,
+                result:0,
+                selected:0
+            },
+            methods:{
+                handleAddOperation:function(){
+                    if(parseInt(this.selected) === 0) {
+                        /*在v-on注册的方法中，可以直接通过this来访问data中的数据成员*/
+                        this.result = parseInt(this.firstNumber) + parseInt(this.secondNumber);
+                    }else if(parseInt(this.selected) === 1){
+                        this.result = parseInt(this.firstNumber) - parseInt(this.secondNumber);
+                    }else if(parseInt(this.selected) === 2){
+                        this.result = parseInt(this.firstNumber) * parseInt(this.secondNumber);
+                    }else if(parseInt(this.selected) === 3){
+                        this.result = parseInt(this.firstNumber) / parseInt(this.secondNumber);
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>

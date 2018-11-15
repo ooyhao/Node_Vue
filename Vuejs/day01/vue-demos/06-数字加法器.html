@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input type="number" v-model="firstNumber"  /> +
+        <input type="number" v-model="secondNumber" />
+        <button v-on:click="handleAddOperation">=</button>
+        <input type="text" readonly="readonly" v-model="result"/>
+    </div>
+
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                firstNumber:0,
+                secondNumber:0,
+                result:0
+            },
+            methods:{
+                handleAddOperation:function(){
+                    this.result = parseInt(this.firstNumber)+parseInt(this.secondNumber);
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>

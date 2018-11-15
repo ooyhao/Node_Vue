@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        单价：<input type="number" v-model="price" /><br/>
+        数量：<button @click="decrement">-</button><span>{{number}}</span><button @click="increment">+</button>
+        <p>{{price*number}}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                price:0,
+                number:0
+            },
+            methods:{
+                /*这里不可以写箭头函数，否则绑定的就是window
+                *   ES6为对象成员方法提供了一种简写的方式
+                * */
+                /*decrement(){
+                    this.number>0?this.number--:this.number;
+                 },*/
+                decrement:function(){
+                    this.number>0?this.number--:this.number;
+                },
+                increment:function(){
+                    this.number++;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

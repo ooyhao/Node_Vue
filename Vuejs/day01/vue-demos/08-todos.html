@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <style>
+        .done{
+            text-decoration: line-through;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>TODO</h1>
+        <p>{{todos.filter(function(item){return item.done === false}).length}} of {{todos.length}}
+            remaining [<button @click="deleteAllComplete">archive</button>] </p>
+
+        <p v-for="(item,index) in todos">
+            <!--通过v-model的boolean值来控制复选框是否被选中-->
+            <!--
+                checkbox 双向绑定了item.done,
+                当checkbox 改变的时候，会影响数据item.done也跟着改变
+                当item.done变了，会影响所有使用了这个item.done的绑定。
+            -->
+            <input v-model="item.done" type="checkbox"/>
+            <!--
+                v-bind 可以用来动态绑定属性值
+                class 给了一个对象：
+                    对象的key就是[样式的]类名
+                    对象的value是布尔值
+
+                    当布尔值为true的时候，作用这个key样式
+                    当布尔值为false的时候，作用这个key样式
+
+            -->
+            <span v-bind:class="{done:item.done}" >{{item.title}}</span>
+            <button @click="deleteTodo(index)">x</button>
+        </p>
+
+        <input @keydown.enter="handleTodo"  v-model="todoText" type="text"/><button @click="handleTodo" >ADD</button>
+    </div>
+
+
+    <script>
+
+        var todos = [
+            {
+                id:1,
+                title:'吃饭',
+                done:true
+            },{
+                id:2,
+                title:'睡觉',
+                done:false
+            },{
+                id:3,
+                title:'打豆豆',
+                done:false
+            }
+
+        ];
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                todos:todos,
+                todoText:''
+            },
+
+            methods:{
+                //数据驱动视图；数据变视图跟着变
+                handleTodo:function(){
+                    if(this.todoText.trim() === ''){
+                        return;
+                    }
+                    const todos = this.todos;
+                    todos.push({
+                        id : todos[todos.length-1].id+1,
+                        title : this.todoText.trim(),
+                        done:false
+                    });
+                    this.todoText = '';
+                },
+                deleteTodo:function(index){
+                    this.todos.splice(index,1);
+                },
+                deleteAllComplete:function(){
+                    this.todos = this.todos.filter(function(item){
+                        return item.done === false;
+                    });
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
