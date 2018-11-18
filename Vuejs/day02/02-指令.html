@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <!--
+            v-i 条件渲染
+            v-for 列表渲染
+            v-on  注册事件
+            v-bind 属性绑定
+            v-once 只绑定一次
+            v-html 绑定输出html
+        -->
+        <p v-if="seen">你看不见我</p>
+        <!--<a v-on:click="handleGoBaidu" href="http://www.baidu.com">去百度</a>-->
+        <a v-on:click.prevent="handleGoBaidu" href="http://www.baidu.com">去百度</a>
+    </div>
+    <script>
+
+        var app = new Vue({
+            el:'#app',//css选择器
+            data:{
+                seen:true
+            },
+            methods:{
+                handleGoBaidu:function(e){
+                    /*
+                    * 阻止默认的a标签的跳转事件。（阻止默认事件行为）
+                    * 即：如果没有e.preventDefault();弹框之后，会跳转到百度。
+                    * 但是使用e.preventDefault();可以阻止默认事件，即只会弹框不会进行链接跳转。
+                    * */
+//                    e.preventDefault();
+                    window.alert('去百度');
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="radio" id="one"  v-model="picked" value="One"/>One
+    <!--<label for="one">One</label>-->
+    <br/>
+    <input type="radio" id="two" v-model="picked" value="Two" />Two
+    <!--<label for="two">Two</label>-->
+    <br/>
+    <span>Picked:{{picked}}</span>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            picked:''
+        },
+        methods: {}
+    });
+</script>
+</body>
+</html>

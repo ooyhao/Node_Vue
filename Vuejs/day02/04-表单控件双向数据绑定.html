@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!--<input type="text" v-bind:value="message"/>-->
+    <!--文本-->
+    <input type="text" v-model="message" />{{message}}
+    <br/>
+    <span>Multiline message is:</span>
+    <p>{{message}}</p>
+    <br/>
+    <!--多行文本-->
+    <textarea v-model="message" placeholder="add multiple lines" ></textarea>
+    <br/>
+    <!--复选框-->
+    <input type="checkbox" v-bind:checked="checked"/>
+    <input type="checkbox" v-model="checked"/>{{checked}}
+    <!--<div v-bind:class="{box:checked}"></div>-->
+    <div v-if="checked" class="box"></div>
+</div>
+
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message:'hello',
+            checked:true
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <select v-model="selected">
+        <!--disable 设置为不可选-->
+        <option disabled value="">==请选择==</option>
+        <option value="1">A</option>
+        <option value="2">B</option>
+        <option value="3">C</option>
+    </select>
+    <span>Selected:{{selected}}</span>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selected:''
+        },
+        methods: {}
+    });
+</script>
+</body>
+</html>

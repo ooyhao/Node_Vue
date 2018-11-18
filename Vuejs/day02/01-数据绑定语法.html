@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <!--初始化之后就不可以修改了-->
+        <h1 v-once>{{foo}}</h1>
+        <p>{{foo}}</p>
+        <div>
+            {{rowHtml}}
+        </div>
+        <div v-html="rowHtml"></div>
+
+
+        <hr/>
+        <ul>
+            <li v-for="item in todos">
+                <!-- v-bind只能用于属性
+                     它的值是一个JavaScript表达式，和{{}}里面的语法一致、
+                     唯一的区别就是：{{}}用于标签文本绑定，v-bind用于属性文本绑定。
+                -->
+                <!--<a v-bind:href="'/todos?id='+item.id">{{item.title +  'Vue'}}</a>-->
+                <!--<a v-bind:href="'/todos?id='+item.id">{{item.title}} Vue</a>-->
+                <a v-bind:href="true?123:345">{{true?123:345}}</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                foo:'Hello',
+                /*在html字符串中不能使用vue的语法特性，{{foo}}会被处理为字符串，原样输出*/
+                rowHtml:'<h1>Hello {{foo}} Vue</h1>',
+                todos:[
+                    {
+                        id:1,
+                        title:'aaa'
+                    },{
+                        id:2,
+                        title:'bbb'
+                    },{
+                        id:3,
+                        title:'ccc'
+                    }
+                ]
+            },
+            methods:{
+
+            }
+        });
+    </script>
+
+
+</body>
+</html>
