@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <input type="radio" v-model="picked" value="a" />
+
+    <input type="checkbox" v-model="checked" />
+
+
+    <select v-model="selected">
+        <option value="abc">ABC</option>
+        <option value="def">DEF</option>
+    </select>
+
+    <hr/>
+
+    <input
+            type="checkbox"
+            v-model="toggle"
+            true-value="yes"
+            false-value="no"
+            />
+       toggle: {{toggle}}
+
+    <hr/>
+    <input type="radio" v-model="pick" v-bind:value="a"> {{pick}}/{{a}}
+
+    <hr/>
+    <select v-model="selected">
+        <!-- 内联对象字面量 -->
+        <option v-bind:value="{number: 123 }">1234</option>
+    </select>
+    {{selected}}
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            picked:'abc',
+            checked:false,
+            selected:'def',
+            toggle:'',
+            pick:'23',
+            a:'32'
+        },
+        methods: {}
+    });
+</script>
+</body>
+</html>

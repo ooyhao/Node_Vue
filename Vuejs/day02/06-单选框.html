@@ -8,7 +8,10 @@
 <body>
 
 <div id="app">
-    <select v-model="selected">
+    <!--单选框-->
+    <!--<select v-model="selected" >-->
+    <!--多选框-->
+    <select v-model="selected" multiple >
         <!--disable 设置为不可选-->
         <option disabled value="">==请选择==</option>
         <option value="1">A</option>
@@ -16,16 +19,31 @@
         <option value="3">C</option>
     </select>
     <span>Selected:{{selected}}</span>
+    <hr/>
+
+
+    <select multiple="multiple" >
+        <option v-for="item in todos" value="item.id">{{item.text}}</option>
+    </select>
+
 </div>
 
 <script>
     var app = new Vue({
         el: '#app',
         data: {
-            selected:''
-        },
-        methods: {}
+            selected: '',
+            todos: [
+                {
+                    id: -1,
+                    text: '永久禁用'
+                }, {
+                    id: 0,
+                    text: '启用'
+                }, {
+                    id: 1,
+                    text: '禁用'
+                }]
+        }
     });
-</script>
-</body>
-</html>
+ </script>
