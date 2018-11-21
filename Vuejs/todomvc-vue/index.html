@@ -15,25 +15,56 @@
 			<section class="todoapp">
 				<header class="header">
 					<h1>todos</h1>
-					<input v-on:keydown.enter="handleNewTodoKeyDown" class="new-todo" placeholder="What needs to be done?" autofocus>
+					<input
+							v-on:keydown.enter="handleNewTodoKeyDown"
+							class="new-todo"
+							placeholder="What needs to be done?" autofocus>
 				</header>
 				<!-- This section should be hidden by default and shown when there are todos -->
 				<section class="main">
-					<input @click="handleToggleAllClick" id="toggle-all" class="toggle-all" type="checkbox">
+					<input
+							@click="handleToggleAllClick"
+							id="toggle-all"
+							class="toggle-all"
+							type="checkbox">
 					<label for="toggle-all">Mark all as complete</label>
 					<ul class="todo-list">
 						<!-- These are here just to show the structure of the list items -->
 						<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-						<li v-bind:class="{completed:item.completed,editing:currentEditing === item}" v-for="(item,index) in todos" >
+						<!--
+							任务项有三种样式状态：
+								未完成：无样式
+								已完成：completed
+								编辑：editing
+							双击时：就把currentEditing = 当前双击的任务项
+						-->
+						<li
+								v-bind:class="{
+									completed:item.completed,
+									editing:currentEditing === item
+								}"
+								v-for="(item,index) in todos" >
 							<div class="view">
 								<!--可以使用属性绑定，也可以使用v-model-->
 								<!--<input class="toggle" type="checkbox" v-bind:checked="item.completed">-->
 								<input class="toggle" type="checkbox" v-model="item.completed">
-								<label @dblclick="handleGetEditingDblClick(item)">{{item.title}}</label>
-								<button @click="handleRemoveTodoClick(index)" class="destroy"></button>
+								<label
+										@dblclick="handleGetEditingDblClick(item)"
+										>{{item.title}}</label>
+								<button
+										@click="handleRemoveTodoClick(index)"
+										class="destroy"></button>
 							</div>
-							<!--v-bind:value="item.title"-->
-							<input @keydown.enter="handleSaveTodoOnBlur" @blur="handleSaveTodoOnBlur"  class="edit" v-model="item.title" >
+							<!--v-bind:value="item.title"
+								还有一个取消编辑不保存的功能，所以我们就不使用双向数据绑定。
+							-->
+							<input
+									class="edit"
+									@keydown.esc="handleCancelEditEsc"
+									@keydown.enter="handleSaveTodo(item,index,$event)"
+									@blur="handleSaveTodo(item,index,$event)"
+									:value="item.title"
+									>
 						</li>
 					</ul>
 				</section>
@@ -55,10 +86,17 @@
 						</li>
 					</ul>
 					<!-- Hidden if no completed items are left ↓ -->
-					<button class="clear-completed">Clear completed</button>
+					<!--
+						some.只要有一个为true，则为true。
+						every.全部为true，则为true。
+					-->
+					<button
+							class="clear-completed"
+							v-if="todos.some(item => item.completed)"
+							@click="handleClearCompletedClick"
+							>Clear completed</button>
 				</footer>
 			</section>
-
 
 		</div>
 
@@ -74,64 +112,4 @@
 		<!--<script src="node_modules/todomvc-common/base.js"></script>-->
 		<script src="js/app.js"></script>
 	</body>
-	<script>
-		var todos = [
-			{
-				id:1,
-				title:'抽烟',
-				completed:true
-			},{
-				id:2,
-				title:'喝酒',
-				completed:false
-			},{
-				id:3,
-				title:'烫头',
-				completed:false
-			}
-		];
-		var app = new Vue({
-			el:'#app',
-			data:{
-				todos:todos,
-				currentEditing:null
-
-			},
-			methods:{
-				handleNewTodoKeyDown:function(e){
-					var todos = this.todos;
-					var id = todos[todos.length-1]?todos[todos.length-1].id+1:1;
-					var target = e.target;
-					var value = target.value;
-					var todo = {
-						id:id,
-						title:value,
-						completed:false
-					}
-					this.todos.push(todo);
-					target.value = '';
-				},
-				handleToggleAllClick:function(e){
-					var checked = e.target.checked;
-					this.todos.forEach(function(item){
-						item.completed=checked;
-					});
-				},
-				handleRemoveTodoClick:function(index){
-					this.todos.splice(index,1);
-				},
-				handleGetEditingDblClick:function(item){
-					this.currentEditing = item;
-				},
-				handleSaveTodoOnBlur:function(){
-					this.currentEditing = null;
-				},
-				remainingCount:function(){
-					return this.todos.filter(function(todo){
-						return !todo.completed;
-					}).length;
-				}
-			}
-		});
-	</script>
 </html>
