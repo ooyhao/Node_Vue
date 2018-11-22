@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <ul>
+        <li v-for="item in items" v-bind:key="item.id">
+            {{item}}
+        </li>
+    </ul>
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            items:['a','b','c']
+        },
+        methods: {}
+    });
+//    app.items[1] = 'x';//不是响应式的                                   ['a','b','c']
+//    app.items.length = 2; //不是响应式的                                ['a','b','c']
+    Vue.set(app.items,1,'x');//将index=1上的元素修改为x                    ['a','x','c']
+    app.items.splice(1,1,'xx');//将上面已修改的x变成了xx                    ['a','xx','c']
+    app.$set(app.items,0,'v'); //将index=0的位置上的元素修改为v             ['v','xx','c']
+    app.items.splice(2);//将app.item的长度修改为2，即保留index=0与1的元素。   ['v','xx']
+                        // 页面显示index=0与index=1的元素
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <!--使用v-if-->
+    <div v-if="ifSeen">
+        <h1>Hello v-if</h1>
+    </div>
+    <!--使用v-show-->
+    <div v-show="showSeen" >
+        <h1>Hello v-show</h1>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            ifSeen:false,
+            showSeen:false
+        },
+        methods: {}
+    });
+</script>
+</body>
+</html>

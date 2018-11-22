@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li v-for="n in 10">
+            {{n}} -- {{message}}
+        </li>
+    </ul>
+
+    <hr/>
+    <ul>
+        <template v-for="fruit in fruits">
+            <li>{{fruit}}</li>
+            <li>o_o</li>
+        </template>
+    </ul>
+
+    <hr/>
+    <ul>
+        <li v-for="todo in todos" v-if="!todo.completed" >
+            {{todo}}
+        </li>
+    </ul>
+
+
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message:'Hello Vue',
+            fruits:['apple','orange','pear'],
+            todos:[
+                {
+                    id:1,
+                    title:'吃饭',
+                    completed:true
+                },{
+                    id:2,
+                    title:'睡觉',
+                    completed:false
+                },{
+                    id:3,
+                    title:'打豆豆',
+                    completed:false
+                },{
+                    id:4,
+                    title:'写代码',
+                    completed:true
+                }
+            ]
+        },
+        methods: {}
+    });
+</script>
+</body>
+</html>

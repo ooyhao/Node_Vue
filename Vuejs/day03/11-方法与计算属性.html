@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    当前时间：{{now}}
+    <br/>
+    使用Methods获取时间:{{timeMethods()}}
+    <br/>
+    使用Computed获取时间:{{timeComputed}}
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            now:1
+        },
+        methods: {
+            timeMethods:function(){
+                return Date.now()+this.now;
+            }
+        },
+        computed:{
+            timeComputed:function(){
+                return Date.now()+this.now;
+            }
+        }
+    });
+</script>
+</body>
+</html>

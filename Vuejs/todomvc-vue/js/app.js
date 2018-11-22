@@ -21,6 +21,14 @@
             currentEditing:null
 
         },
+		/**局部的自定义属性*/
+		directives:{
+			focus:{
+				inserted:function(el){
+					el.focus();
+				}
+			}
+		},
         methods:{
             /**新增todo*/
             handleNewTodoKeyDown:function(e){
