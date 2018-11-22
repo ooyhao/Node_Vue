@@ -1,5 +1,9 @@
 {
   "private": true,
+  "scripts":{
+    "dev":"browser-sync start --server --files \"*.html, css/*.css,js/*.js\"",
+    "start":"npm run dev"
+  },
   "dependencies": {
     "browser-sync": "^2.26.3",
     "jquery": "^3.3.1",

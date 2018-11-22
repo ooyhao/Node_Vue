@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    原始信息：{{message}}
+    <br/>
+    调用翻转函数后的信息：{{reverseMessageFunc()}}
+    <br/>
+    计算翻转后的信息：{{reverseMessage}}
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message:'Hello'
+        },
+        methods: {
+            reverseMessageFunc:function(){
+                /*
+                * message.split('');[ 'h', 'e', 'l', 'l', 'o' ]
+                * message.split('').reverse();[ 'o', 'l', 'l', 'e', 'h' ]
+                * message.split('').reverse().join(''); olleh
+                * */
+                return this.message.split('').reverse().join('');
+            }
+        },
+        computed:{
+            reverseMessage:function(){
+                return this.message.split('').reverse().join('');
+            }
+        }
+    });
+</script>
+</body>
+</html>

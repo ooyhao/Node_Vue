@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h3>不使用v-pre</h3>
+    <div>{{message}}</div>
+    <h3>使用v-pre</h3>
+    <div v-pre>{{message}}</div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message:'spring springboot springmvc springdata springcloud'
+        },
+        methods: {}
+    });
+</script>
+</body>
+</html>

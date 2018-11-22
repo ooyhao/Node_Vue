@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <!--遍历对象-->
+    <ul>
+        <li v-for="(value,key,index) in user" :key="value.id">
+            {{key}} - {{value}} - {{index}}
+        </li>
+    </ul>
+    <hr/>
+    <ul>
+        <li v-for="(value,key,index) in student" :key="value.id">
+            {{key}} -- {{value}} -- {{index}}
+        </li>
+    </ul>
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            user:{
+                username:'admin'
+            },
+            student:{
+                username:'张三'
+            }
+        },
+        methods: {}
+    });
+    /**给指定对象一个添加一个属性*/
+    app.user.password = '1234';//添加属性password
+    Vue.set(app.user,'age',22);//添加属性age
+    app.$set(app.user,'email','1234@12.com');//添加email属性
+
+
+    /**给指定对象一次性添加多个属性*/
+    app.student = Object.assign({},app.student,{
+        password:'123456',
+        email:'1234@163.com'
+    });
+
+</script>
+</body>
+</html>

@@ -22,8 +22,26 @@
 				</header>
 				<!-- This section should be hidden by default and shown when there are todos -->
 				<section class="main">
-					<input
+					<!--<input
 							@click="handleToggleAllClick"
+							id="toggle-all"
+							class="toggle-all"
+							type="checkbox">-->
+
+					<!--
+						双向绑定结合计算属性实现同样功能
+						对数据驱动视图理解越深，这种代码就写得越简洁。
+					-->
+
+					<!--
+						这里的复选框双向绑定了toggleAllState计算属性
+						无论是普通属性还是计算属性都要取值和赋值
+						这里我们绑定的属性比较特殊，所以访问toggleAllState时，
+						会调用计算属性的get()方法，当你为toggleAllState重新赋值的时候
+						就会调用set()方法.我们的表单控制具有双向绑定。
+					-->
+					<input
+							v-model="toggleAllState"
 							id="toggle-all"
 							class="toggle-all"
 							type="checkbox">
@@ -72,7 +90,7 @@
 				<!--控制footer的显示与否-->
 				<footer v-if="todos.length"  class="footer">
 					<!-- This should be `0 items left` by default -->
-					<span class="todo-count"><strong>{{remainingCount()}}</strong> item left</span>
+					<span class="todo-count"><strong>{{remainingCount}}</strong> item left</span>
 					<!-- Remove this if you don't implement routing -->
 					<ul class="filters">
 						<li>

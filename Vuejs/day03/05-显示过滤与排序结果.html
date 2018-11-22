@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li v-for="item in evenNumbers">
+            {{item}}
+        </li>
+    </ul>
+    <hr/>
+    <ul>
+        <li v-for="item in even(numbers)">
+            {{item}}
+        </li>
+    </ul>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            numbers:[1,2,3,4,5]
+        },
+        methods: {
+            even:function(numbers){
+                return numbers.filter(function(item){
+                    return item % 2 === 0;
+                });
+            }
+        },
+        computed:{
+            evenNumbers:function(){
+                return this.numbers.filter(function(item){
+                    return item % 2 === 0;
+                });
+            }
+        }
+    });
+
+
+
+
+</script>
+</body>
+</html>
