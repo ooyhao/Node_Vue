@@ -40,8 +40,10 @@
         watch: {},
         directives:{
             mybind:{
-                bind:function(el,binding,vnode){
-                    /**获取需要绑定的属性*/
+
+
+                /*bind:function(el,binding,vnode){
+                    /!**获取需要绑定的属性*!/
                     var arg = binding.arg;
                     if(binding.value instanceof Object){
                         var values = binding.value;
@@ -52,12 +54,12 @@
                         }
                         return;
                     }
-                    /**获取需要指定的值*/
+                    /!**获取需要指定的值*!/
                     var value = binding.value;
                     el.setAttribute(arg,value);
                 },
                 update:function(el,binding,vnode){
-                    /**获取需要绑定的属性*/
+                    /!**获取需要绑定的属性*!/
                     var arg = binding.arg;
                     if(binding.value instanceof Object){
                         var values = binding.value;
@@ -70,10 +72,10 @@
                         }
                         return;
                     }
-                    /**获取需要指定的值*/
+                    /!**获取需要指定的值*!/
                     var value = binding.value;
                     el.setAttribute(arg,value);
-                }
+                }*/
             }
         }
     });
