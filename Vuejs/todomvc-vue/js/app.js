@@ -1,5 +1,5 @@
 ;(function(){
-    var todos = [
+    /*var todos = [
         {
             id:1,
             title:'抽烟',
@@ -13,15 +13,16 @@
             title:'烫头',
             completed:false
         }
-    ];
+    ];*/
     window.app = new Vue({
         el:'#app',
         data:{
             todos:JSON.parse(window.localStorage.getItem('todos')||'[]'),
-            currentEditing:null
+            currentEditing:null,
+            filterText:'all'
 
         },
-		/**局部的自定义属性*/
+		/**局部的自定义指令*/
 		directives:{
 			focus:{
 				inserted:function(el){
@@ -43,7 +44,7 @@
                     id:id,
                     title:value,
                     completed:false
-                }
+                };
                 this.todos.push(todo);
                 target.value = '';
             },
@@ -140,6 +141,24 @@
                     });
 
                 }
+            },
+            filterTodos:function(){
+                var text = this.filterText;
+                switch (text){
+                    case 'active':
+                        return this.todos.filter(function(todo){
+                            return !todo.completed;
+                        });
+                    break;
+                    case 'completed':
+                        return this.todos.filter(function(todo){
+                            return todo.completed;
+                        });
+                        break;
+                    default:
+                        return this.todos;
+                        break;
+                }
             }
         },
         watch:{
@@ -161,4 +180,14 @@
             }
         }
     });
+
+
+    window.onhashchange=handleFilterTodos;
+
+    function handleFilterTodos(){
+        app.filterText = window.location.hash.substring(2);
+    }
+    window.onhashchange();
+
+
 })();

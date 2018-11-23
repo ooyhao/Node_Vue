@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:v-demo="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-focus />
+    <hr/>
+    <div v-demo:foo.a.b="message" ></div>
+
+</div>
+<script>
+
+
+    Vue.directive('demo',{
+        bind:function(el, binding, vnode){
+            var s = JSON.stringify;
+            el.innerHTML =
+                    'name:'+s(binding.name) + '<br>'+
+                    'value:'+s(binding.value) + '<br>'+
+                    'expression:'+s(binding.expression) + '<br>'+
+                    'argument:'+s(binding.arg) + '<br>'+
+                    'modifiers:'+s(binding.modifiers) + '<br>'+
+                    'vnode keys:'+Object.keys(vnode).join(', ');
+        }
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message:'Hello!'
+        },
+        methods: {},
+        computed: {},
+        watch: {},
+        directives:{
+          focus:{
+              inserted:function(el){
+                  el.focus();
+              },
+              bind:function(el){
+
+              }
+          }
+        }
+    });
+</script>
+</body>
+</html>

@@ -18,7 +18,9 @@
 					<input
 							v-on:keydown.enter="handleNewTodoKeyDown"
 							class="new-todo"
-							placeholder="What needs to be done?" autofocus>
+							placeholder="What needs to be done?"
+							v-focus
+							>
 				</header>
 				<!-- This section should be hidden by default and shown when there are todos -->
 				<section class="main">
@@ -61,7 +63,7 @@
 									completed:item.completed,
 									editing:currentEditing === item
 								}"
-								v-for="(item,index) in todos" >
+								v-for="(item,index) in filterTodos" >
 							<div class="view">
 								<!--可以使用属性绑定，也可以使用v-model-->
 								<!--<input class="toggle" type="checkbox" v-bind:checked="item.completed">-->
@@ -94,13 +96,13 @@
 					<!-- Remove this if you don't implement routing -->
 					<ul class="filters">
 						<li>
-							<a class="selected" href="#/">All</a>
+							<a :class="{selected:filterText === '' }" href="#/">All</a>
 						</li>
 						<li>
-							<a href="#/active">Active</a>
+							<a :class="{selected:filterText === 'active' }" href="#/active">Active</a>
 						</li>
 						<li>
-							<a href="#/completed">Completed</a>
+							<a :class="{selected:filterText === 'completed' }" href="#/completed">Completed</a>
 						</li>
 					</ul>
 					<!-- Hidden if no completed items are left ↓ -->

@@ -11,6 +11,11 @@
     <input v-focus placeholder="username" >
 </div>
 <script>
+    Vue.directive('focus',{
+        inserted:function(el){
+            el.focus();
+        }
+    });
     var app = new Vue({
         el: '#app',
         data: {
@@ -22,20 +27,17 @@
     });
     /*
     * ,directives:{
-     focus:{
-     inserted:function(el){
-     el.focus();
-     }
-     }
+         focus:{
+             inserted:function(el){
+                el.focus();
+             }
+         }
      }
 
     * */
 
-    Vue.directive('focus',{
-        inserted:function(el){
-            el.focus();
-        }
-    });
+
 </script>
 </body>
 </html>
+
