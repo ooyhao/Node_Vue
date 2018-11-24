@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <global-component></global-component>
+</div>
+
+
+<script>
+
+    Vue.component('global-component',{
+        template:'<div>' +
+        '<div>global component</div>' +
+        '<global-component2></global-component2>' +
+        '<hello></hello>' +
+        '</div>',
+        /*组件实例选项，components用来定义组件，这种方式定义的组件只能在当前组件中使用*/
+        components:{
+            /** hello:是组件的名称，{}是一个对象，对象中配置组件的选项*/
+            hello:{
+                template:'<div>Hello Component</div>'
+            }
+        }
+    });
+
+    Vue.component('global-component2',{
+        template:'<div>global2 component</div>'
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {},
+        methods: {}
+    });
+</script>
+</body>
+</html>

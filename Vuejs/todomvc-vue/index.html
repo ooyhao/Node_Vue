@@ -79,6 +79,7 @@
 								还有一个取消编辑不保存的功能，所以我们就不使用双向数据绑定。
 							-->
 							<input
+									v-todo-focus="currentEditing === item"
 									class="edit"
 									@keydown.esc="handleCancelEditEsc"
 									@keydown.enter="handleSaveTodo(item,index,$event)"

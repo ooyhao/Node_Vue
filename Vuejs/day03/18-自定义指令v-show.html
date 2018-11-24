@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1 v-myshow="seen" >Hello Vue.js</h1>
+</div>
+
+<script>
+
+    Vue.directive('myshow',function(el,binding){
+        if(binding.value){
+            el.style.display = 'block';
+        }else{
+            el.style.display = 'none';
+        }
+    });
+    /*Vue.directive('myshow',{
+        bind:function(el,binding){
+            if(binding.value){
+                el.style.display = 'block';
+            }else{
+                el.style.display = 'none';
+            }
+        },
+        inserted:function(){
+            //上面的bind中的代码也可以放在此处
+        },
+        update:function(el,binding){
+            if(binding.value){
+                el.style.display = 'block';
+            }else{
+                el.style.display = 'none';
+            }
+        },
+        componentUpdated:function(){
+            //上面的update中的代码也可以放在此处
+        },
+        unbind:function(){
+
+        }
+    });*/
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            seen:true
+        },
+        methods: {}
+    });
+</script>
+</body>
+</html>

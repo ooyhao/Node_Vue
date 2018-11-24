@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <link rel="stylesheet" href="node_modules/element-ui/lib/theme-chalk/index.css"/>
+    <script src="node_modules/element-ui/lib/index.js"></script>
+</head>
+<body>
+
+<!--
+    导入Vue，因为是基于vue开发
+    导入Element-ui
+-->
+<div id="app">
+
+    <!--
+        组建的封装就是封装了一个自定义HTML标签
+    -->
+    <el-rate
+            v-model="value"
+            show-text>
+    </el-rate>
+    <button @click="handleClick" >弹出用户评分</button>
+
+    <hr/>
+    <template>
+        <div class="block">
+            <span class="demonstration">默认</span>
+            <el-date-picker
+                    v-model="value1"
+                    type="date"
+                    placeholder="选择日期">
+            </el-date-picker>
+        </div>
+    </template>
+    {{value1}}
+
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            value: 4,
+            value1: ''
+
+        },
+        methods: {
+            handleClick:function(){
+                window.alert(this.value);
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+<!--
+    把type 指定为 text/x-template
+    起一个id
+-->
+<script type="text/x-template" id="hello-world-template">
+    <p>Hello Vue.js</p>
+</script>
+
+<div id="app">
+    <my-component></my-component>
+    <hr/>
+    <my-component></my-component><!--重用组件-->
+</div>
+
+
+<script>
+
+    //1.先定义（注册）组件
+    //2.使用(相当于扩展html标签)
+//      注意：只能有一个根元素，不能写成template:'<div>My Component</div><h1>Hello vue</h1>'
+    Vue.component('my-component',{
+//        template:'<div>My Component</div>'
+        template:'<div>' +
+        '<div>My Component</div>' +
+        '<h2>{{message}}</h2>' +
+        '<input type="text" v-model="message" >' +
+        '<button @click="showMessage">点击弹出自己的message</button>' +
+        '<input type="checkbox" v-model="seen" >' +
+        '<div v-if="seen" class="box"></div>' +
+        '</div>',
+        data:function(){
+            return {
+                message:'Component Data',
+                seen:true
+            }
+        },
+        methods:{
+            showMessage:function(){
+                window.alert(this.message);//Component Data
+            }
+        }
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message:'app'
+        },
+        methods: {}
+    });
+</script>
+</body>
+</html>

@@ -14,6 +14,18 @@
             completed:false
         }
     ];*/
+
+    Vue.directive('todo-focus',{
+        update:function(el,binding){
+            //多个focus只有第一个生效。所以可以直接使用el.focus();但是不严谨
+            //可以通过传递进行判断。
+            if(binding.value){
+                el.focus();
+            }
+
+        }
+    });
+
     window.app = new Vue({
         el:'#app',
         data:{
@@ -23,6 +35,7 @@
 
         },
 		/**局部的自定义指令*/
+        /**聚焦比较特殊，不能写在bind中*/
 		directives:{
 			focus:{
 				inserted:function(el){

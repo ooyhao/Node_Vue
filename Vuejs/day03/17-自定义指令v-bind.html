@@ -20,6 +20,7 @@
 <body>
 
 <div id="app">
+    <span v-mybind:title=" 'Hello OuYang' ">234</span>
     <div v-bind:class="{border:border,bg:bg}">v中的v-bind</div>
     <hr/>
     <div v-mybind:class="'border'" >自定义的v-bind</div>
@@ -29,6 +30,64 @@
     <div v-mybind:class="{border:border,bg:bg}">对象属性</div>
 </div>
 <script>
+
+    /*Vue.directive('mybind',{
+        bind:function(el,binding){
+            /!**获取需要绑定的属性*!/
+            var arg = binding.arg;
+            if(binding.value instanceof Object && arg === 'class'){
+                var values = binding.value;
+                for(var key in values){
+                    if(values[key] && !el.classList.contains(key)){
+                        el.classList.add(key);
+                    }else if(!values[key] && el.classList.contains(key)){
+                        el.classList.remove(key);
+                    }
+                }
+                return;
+            }
+            /!**获取需要指定的值*!/
+            var value = binding.value;
+            el.setAttribute(arg,value);
+        },
+        update:function(el,binding){
+            /!**获取需要绑定的属性*!/
+            var arg = binding.arg;
+            if(binding.value instanceof Object && arg === 'class'){
+                var values = binding.value;
+                for(var key in values){
+                    if(values[key] && !el.classList.contains(key)){
+                        el.classList.add(key);
+                    }else if(!values[key] && el.classList.contains(key)){
+                        el.classList.remove(key);
+                    }
+                }
+                return;
+            }
+            /!**获取需要指定的值*!/
+            var value = binding.value;
+            el.setAttribute(arg,value);
+        }
+    });*/
+    Vue.directive('mybind',function(el,binding){
+        /**获取需要绑定的属性*/
+        var arg = binding.arg;
+        if(binding.value instanceof Object && arg === 'class'){
+            var values = binding.value;
+            for(var key in values){
+                if(values[key] && !el.classList.contains(key)){
+                    el.classList.add(key);
+                }else if(!values[key] && el.classList.contains(key)){
+                    el.classList.remove(key);
+                }
+            }
+            return;
+        }
+        /**获取需要指定的值*/
+        var value = binding.value;
+        el.setAttribute(arg,value);
+    });
+
     var app = new Vue({
         el: '#app',
         data: {
@@ -38,46 +97,7 @@
         methods: {},
         computed: {},
         watch: {},
-        directives:{
-            mybind:{
-
-
-                /*bind:function(el,binding,vnode){
-                    /!**获取需要绑定的属性*!/
-                    var arg = binding.arg;
-                    if(binding.value instanceof Object){
-                        var values = binding.value;
-                        for(var key in values){
-                            if(values[key]){
-                                el.classList.add(key);
-                            }
-                        }
-                        return;
-                    }
-                    /!**获取需要指定的值*!/
-                    var value = binding.value;
-                    el.setAttribute(arg,value);
-                },
-                update:function(el,binding,vnode){
-                    /!**获取需要绑定的属性*!/
-                    var arg = binding.arg;
-                    if(binding.value instanceof Object){
-                        var values = binding.value;
-                        for(var key in values){
-                            if(values[key] && !el.classList.contains(key)){
-                                el.classList.add(key);
-                            }else if(!values[key] && el.classList.contains(key)){
-                                el.classList.remove(key);
-                            }
-                        }
-                        return;
-                    }
-                    /!**获取需要指定的值*!/
-                    var value = binding.value;
-                    el.setAttribute(arg,value);
-                }*/
-            }
-        }
+        directives:{}
     });
 </script>
 </body>
